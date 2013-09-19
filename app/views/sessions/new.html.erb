@@ -1,21 +1,18 @@
-<div class="login_form" >
-  <div id="notice"><%= flash[:notice] %></div>
-  <div id='alert'><%= flash[:alert] %></div>
-  <%= form_tag do %>
-    <fieldset>
-      <legend>Please Log In</legend>
-      <div>
-        <label for="username" >Username:</label>
-        <%= text_field_tag :username, params[:username] %>
-      </div>
-      <div>
-        <label for="password" >Password:</label>
-        <%= password_field_tag :password, params[:password] %>
-      </div>
-      <div>
-        <%= submit_tag "Login" %>
-      </div>
-    </fieldset>
-  <% end %>
-</div>
+<%= render 'layouts/messages' %>
+
+
+<%= form_tag login_path, :class => 'form-signin span3' do %>
+  <h2 class="form-signin-heading">Please Log-in</h2>
+
+
+  <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
+
+  <input type="password" name="password" class="form-control" placeholder="Password">
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+<% end %>
+
+
+
+
 
