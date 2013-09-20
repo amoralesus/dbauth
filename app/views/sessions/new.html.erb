@@ -1,7 +1,7 @@
 <%= render 'layouts/messages' %>
 
 
-<%= form_tag login_path, :class => 'form-signin span3' do %>
+<%= form_tag login_path, :class => 'form-signin md-3' do %>
   <h2 class="form-signin-heading">Please Log-in</h2>
 
 
@@ -11,7 +11,7 @@
 
   <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
 
-  <p> <%= link_to 'Forgot my password', '' %></p>
+  <p> <%= link_to 'Forgot my password', new_password_recovery_path %></p>
 <% end %>
 
 

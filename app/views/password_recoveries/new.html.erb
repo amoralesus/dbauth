@@ -1,0 +1,10 @@
+<%= render 'layouts/messages' %>
+
+
+<%= form_for @password_recovery, :class => 'form-signin' do %>
+  <h2 class="form-signin-heading">Forgot Password</h2>
+  <input type="text" name="email" class="form-control" placeholder="Please enter your email here" autofocus>
+  <button class="btn btn-md btn-primary btn-block" type="submit">Submit</button>
+<% end %>
+
+
