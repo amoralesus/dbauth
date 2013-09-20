@@ -2,6 +2,7 @@ Dbauth::Application.routes.draw do
 
   resources :users
 
+  resources :password_recoveries, :only => [:new, :create, :edit, :update]
 
   get 'admin' => 'admin#index'
   controller :sessions do

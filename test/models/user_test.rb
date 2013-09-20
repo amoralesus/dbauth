@@ -4,7 +4,6 @@ class UserTest < ActiveSupport::TestCase
   test "a user with a password should save" do
     user = User.new(:username => 'one', :email => 'alberto@moralitos.com', :password => 'password')
     user.save
-    puts user.inspect
     assert_equal([], user.errors.full_messages, "Expected no errors but go #{user.errors.full_messages}")
   end
 

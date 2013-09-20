@@ -19,4 +19,5 @@ class SessionsController < ApplicationController
     redirect_to admin_url
   end
 
+
 end

@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   attr_reader :password
   validate :password_must_be_present
 
+  has_many :password_recoveries
+
   class << self
     def authenticate(name, password)
       if user = find_by_username(name)
@@ -21,7 +23,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  # 'password' is a virtual attribute
   def password=(password)
     @password = password
     if password.present?
