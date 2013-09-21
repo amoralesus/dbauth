@@ -1,0 +1,17 @@
+<%= render 'layouts/messages' %>
+
+
+<%= form_for @password_recovery, :class => 'form-signin' do %>
+  <input type="hidden" name="recovery_id" value="<%= @password_recovery.recovery_id %>">
+  <h2 class="form-signin-heading">Enter your new password</h2>
+  <div class="row">
+    <label>Password:</label>
+    <input type="password" name="password" class="form-control" autofocus>
+  </div>
+
+  <div class="row">
+    <label>Confirm:</label>
+    <input type="password" name="password_confirmation" class="form-control">
+  </div>
+  <button class="btn btn-md btn-primary btn-block" type="submit">Submit</button>
+<% end %>

@@ -29,10 +29,16 @@ class PasswordRecovery < ActiveRecord::Base
     AdminMailer.forgot_password(self).deliver
   end
 
-  def complete!(new_password)
-    self.user.password = new_password
-    self.user.save!
-    self.update_attribute(:status, 'completed')
+  def complete!(new_password, new_password_confirmation)
+    begin
+      self.user.password = new_password
+      self.user.password_confirmation = new_password_confirmation
+      self.user.save!
+      self.update_attribute(:status, 'completed')
+    rescue Exception => e
+      self.user.errors.full_messages.each {|error| self.errors.add(:base, error)}
+      return false
+    end
   end
 
 
