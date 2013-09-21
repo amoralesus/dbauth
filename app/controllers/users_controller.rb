@@ -3,7 +3,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @q = User.search(params[:q])
+    @users = @q.result(distinct: true).paginate(:page => params[:page])
+  end
+
+  def find
+    @q = User.search(params[:q])
   end
 
   # GET /users/1

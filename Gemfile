@@ -48,3 +48,8 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                           :github => 'anjlab/bootstrap-rails',
                           :branch => '3.0.0'
 
+
+gem 'will_paginate'
+
+gem "ransack" 
+
