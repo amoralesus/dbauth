@@ -53,3 +53,5 @@ gem 'will_paginate'
 
 gem "ransack" 
 
+gem 'declarative_authorization'
+

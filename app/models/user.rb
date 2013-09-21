@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_and_belongs_to_many :roles
+
   validates :username, :presence => true, :uniqueness => true
   validates :email, :presence => true, :uniqueness => true
 
@@ -40,6 +42,9 @@ class User < ActiveRecord::Base
     end
   end
 
+  def role_symbols
+    roles.map {|role| role.title.to_sym}
+  end
 
   private
   

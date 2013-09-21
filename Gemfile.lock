@@ -51,6 +51,7 @@ GEM
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
+    declarative_authorization (0.5.7)
     erubis (2.7.0)
     execjs (2.0.1)
     hike (1.2.3)
@@ -139,6 +140,7 @@ DEPENDENCIES
   anjlab-bootstrap-rails!
   coffee-rails (~> 4.0.0)
   debugger
+  declarative_authorization
   jbuilder (~> 1.2)
   jquery-rails
   mysql2

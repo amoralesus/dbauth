@@ -1,5 +1,7 @@
 Dbauth::Application.routes.draw do
 
+  resources :roles
+
   resources :users, :only => [:index, :show, :new, :create, :edit, :update] do
     collection do
       get 'find'
