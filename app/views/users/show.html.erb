@@ -1,4 +1,11 @@
-<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">User</h3>
+  </div>
+  <div class="panel-body">
+
+    <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Username:</strong>
@@ -20,15 +27,10 @@
   <%= @user.last_name %>
 </p>
 
-<p>
-  <strong>Salt:</strong>
-  <%= @user.salt %>
-</p>
+  </div>
+</div>
 
-<p>
-  <strong>Hashed password:</strong>
-  <%= @user.hashed_password %>
-</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

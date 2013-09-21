@@ -1,5 +1,6 @@
 class PasswordRecoveriesController < ApplicationController
   skip_before_filter :authorize
+  layout 'login'
 
   def new
     @password_recovery = PasswordRecovery.new

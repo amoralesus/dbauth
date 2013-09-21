@@ -31,6 +31,7 @@ class PasswordRecovery < ActiveRecord::Base
 
   def complete!(new_password, new_password_confirmation)
     begin
+      self.user.enforce_password_requirements = true
       self.user.password = new_password
       self.user.password_confirmation = new_password_confirmation
       self.user.save!

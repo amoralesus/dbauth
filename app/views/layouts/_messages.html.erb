@@ -1,11 +1,11 @@
 <% unless flash[:notice].blank? %>
   <div class="row">
-    <div class="alert alert-info col-md-3 centered"><%= flash[:notice] %></div>
+    <div class="alert alert-info col-md-6 centered"><%=raw flash[:notice] %></div>
   </div>
 <% end %>
 
 <% unless flash[:alert].blank? %>
   <div class="row">
-    <div class="alert alert-danger col-md-3 centered"><%= flash[:alert] %></div>
+    <div class="alert alert-danger col-md-6 centered"><%=raw flash[:alert] %></div>
   </div>
 <% end %>

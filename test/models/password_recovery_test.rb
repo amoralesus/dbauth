@@ -30,15 +30,27 @@ class PasswordRecoveryTest < ActiveSupport::TestCase
 
   test "The creation of a new password recovery should email the user" do
     recovery_emails = ActionMailer::Base.deliveries.select {|email| email.body =~ /#{@recovery.recovery_id}/}
-    assert_equal(1, recovery_emails.size)
+      assert_equal(1, recovery_emails.size)
   end
 
   test "The user should set a new password with the recovery" do
     new_password = 'somenewpassword'
-    @recovery.complete!(new_password)
+    @recovery.complete!(new_password, new_password)
     @recovery.reload
     user = User.authenticate(@user.username, new_password)
     assert_equal(@user.id, user.id)
     assert_equal('completed', @recovery.status)
+  end
+
+  test "The user should not set a new password if there is no password_confirmation" do
+    new_password = 'somenewpassword'
+    @recovery.complete!(new_password, nil)
+    assert_equal(["Password confirmation can not be blank"], @recovery.errors.full_messages)
+  end
+
+  test "The user should not set a new password if it is too short" do
+    new_password = 'sofd'
+    @recovery.complete!(new_password, new_password)
+    assert_equal(["Password needs to be at least 6 characters long"], @recovery.errors.full_messages)
   end
 end

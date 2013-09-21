@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   test "a user with a password should save" do
-    user = User.new(:username => 'one', :email => 'alberto@moralitos.com', :password => 'password')
+    user = User.new(:username => 'one', :email => 'albertomoreales@moralitos.com', :password => 'password')
     user.save
     assert_equal([], user.errors.full_messages, "Expected no errors but go #{user.errors.full_messages}")
   end
