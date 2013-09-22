@@ -4,6 +4,8 @@
 <%= form_tag login_path, :class => 'form-signin md-3' do %>
   <h2 class="form-signin-heading">Please Log-in</h2>
 
+  <input type="hidden" name="url" value="<%= @url %>">
+
   <div class="form-group">
     <input type="text" name="username" class="form-control" placeholder="Username" autofocus>
   </div>

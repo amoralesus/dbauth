@@ -11,8 +11,9 @@ Dbauth::Application.routes.draw do
     collection do
       get 'find'
     end
-    resources :password_changes, :only => [:new, :create]
   end
+
+  resources :password_changes, :only => [:new, :create]
 
   resources :password_recoveries, :only => [:new, :create, :edit, :update]
 
@@ -21,7 +22,7 @@ Dbauth::Application.routes.draw do
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
-    delete 'logout' => :destroy
+    get 'logout' => :destroy
   end
 
   root :to => 'admin#index'

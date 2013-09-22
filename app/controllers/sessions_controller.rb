@@ -5,22 +5,23 @@ class SessionsController < ApplicationController
   layout 'login'
 
   def new
-    session[:url] = Rack::Utils.unescape(params[:url].to_s)
+    @url = params[:url] 
   end
 
   def create
     if user = User.authenticate(params[:username], params[:password])
-      session[:user_id] = user.id
-      redirect_to session[:url] || admin_url 
+      cookies.signed[:user_id] = {:value => user.id}
+      originating_url = Rack::Utils.unescape(params[:url].to_s)
+      redirect_url = originating_url.blank? ? root_url : originating_url
+      redirect_to  redirect_url
     else
       redirect_to login_url, :alert => "Invalid user/password combination"
     end
   end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to admin_url
+    cookies.signed[:user_id] = {:value => '-1'}
+    redirect_to root_url
   end
-
 
 end

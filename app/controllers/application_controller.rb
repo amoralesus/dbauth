@@ -14,9 +14,11 @@ class ApplicationController < ActionController::Base
     render 'shared/permission_denied', :layout => 'layouts/login'
   end
 
-  protected
+  private
+
   def authorize
-    unless @current_user = User.active.find_by_id(session[:user_id])
+    @current_user = User.active.find_by_id(cookies.signed[:user_id].to_i)
+    unless @current_user 
       redirect_to login_url(:url => Rack::Utils.escape(request.original_url)), :notice => "Please log in"
     end
   end

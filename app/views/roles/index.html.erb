@@ -1,16 +1,16 @@
 <table class="table table-condensed table-bordered table-hover">
   <thead>
     <tr>
-      <th>Title</th>
       <th><%= link_to 'New Role', new_role_path %></th>
+      <th>Title</th>
     </tr>
   </thead>
 
   <tbody>
     <% @roles.each do |role| %>
       <tr>
-        <td><%= role.title %></td>
         <td><%= link_to 'Show', role %></td>
+        <td><%= role.title %></td>
       </tr>
     <% end %>
   </tbody>
