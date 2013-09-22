@@ -1,4 +1,6 @@
 class RolesController < ApplicationController
+  filter_access_to :all
+
   before_action :set_role, only: [:show, :edit, :update, :destroy]
 
   # GET /roles
@@ -12,53 +14,18 @@ class RolesController < ApplicationController
   def show
   end
 
-  # GET /roles/new
-  def new
-    @role = Role.new
+  def add_user
+    user = User.find(params[:user_id])
+    role = Role.find(params[:id])
+    role.users << user unless role.users.include?(user)
+    redirect_to role_path(role)
   end
 
-  # GET /roles/1/edit
-  def edit
-  end
-
-  # POST /roles
-  # POST /roles.json
-  def create
-    @role = Role.new(role_params)
-
-    respond_to do |format|
-      if @role.save
-        format.html { redirect_to @role, notice: 'Role was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @role }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @role.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /roles/1
-  # PATCH/PUT /roles/1.json
-  def update
-    respond_to do |format|
-      if @role.update(role_params)
-        format.html { redirect_to @role, notice: 'Role was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @role.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /roles/1
-  # DELETE /roles/1.json
-  def destroy
-    @role.destroy
-    respond_to do |format|
-      format.html { redirect_to roles_url }
-      format.json { head :no_content }
-    end
+  def remove_user
+    user = User.find(params[:user_id])
+    role = Role.find(params[:id])
+    role.users.delete(user)
+    redirect_to role_path(role)
   end
 
   private

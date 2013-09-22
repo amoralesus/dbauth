@@ -1,6 +1,11 @@
 Dbauth::Application.routes.draw do
 
-  resources :roles
+  resources :roles do
+    member do
+      post 'add_user'
+      delete 'remove_user'
+    end
+  end
 
   resources :users, :only => [:index, :show, :new, :create, :edit, :update] do
     collection do

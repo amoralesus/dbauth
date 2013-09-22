@@ -1,12 +1,8 @@
-<h1>Listing roles</h1>
-
-<table>
+<table class="table table-condensed table-bordered table-hover">
   <thead>
     <tr>
       <th>Title</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= link_to 'New Role', new_role_path %></th>
     </tr>
   </thead>
 
@@ -15,13 +11,9 @@
       <tr>
         <td><%= role.title %></td>
         <td><%= link_to 'Show', role %></td>
-        <td><%= link_to 'Edit', edit_role_path(role) %></td>
-        <td><%= link_to 'Destroy', role, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Role', new_role_path %>

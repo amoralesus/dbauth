@@ -3,22 +3,33 @@ class User < ActiveRecord::Base
 
   validates :username, :presence => true, :uniqueness => true
   validates :email, :presence => true, :uniqueness => true
-
+  validates_presence_of :status
   validates :password, :confirmation => true, :if => :enforce_password_requirements
-  attr_accessor :password_confirmation
-  attr_reader :password
   validate :password_must_be_present, :if => :enforce_password_requirements
-  
   validate :validate_password_requirements, :if => :enforce_password_requirements
 
   attr_accessor :enforce_password_requirements
+  attr_accessor :password_confirmation
+  attr_reader :password
 
   has_many :password_recoveries
   has_many :password_changes
 
+  before_validation :set_initial_status, :on => :create
+
+
   class << self
+    
+    def active
+      where('status = ?', 'active').order('last_name, first_name')
+    end
+
+    def statuses
+      %w(active inactive)
+    end
+
     def authenticate(name, password)
-      if user = find_by_username(name)
+      if user = find_by_username_and_status(name, 'active')
         if user.hashed_password == encrypt_password(password, user.salt)
           user
         end
@@ -30,8 +41,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def set_initial_status
+    self.status = 'active' if self.status.blank?
+  end
+
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def last_first
+    "#{last_name}, #{first_name}"
   end
 
   def password=(password)

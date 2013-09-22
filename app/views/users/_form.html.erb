@@ -35,6 +35,11 @@
         <%= f.text_field :last_name %>
       </div>
 
+      <div class="field">
+        <%= f.label :status %>
+        <%= f.select :status, User.statuses %>
+      </div>
+
       <div class="actions">
         <%= f.submit %>
       </div>

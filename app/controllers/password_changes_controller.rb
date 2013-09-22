@@ -1,4 +1,5 @@
 class PasswordChangesController < ApplicationController
+
   def new
     @password_change = current_user.password_changes.new 
   end

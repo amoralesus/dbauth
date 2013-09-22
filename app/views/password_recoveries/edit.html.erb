@@ -1,7 +1,7 @@
 <%= render 'layouts/messages' %>
 
 
-<%= form_for @password_recovery, :class => 'form-signin' do %>
+<%= form_for @password_recovery, :html => {:class => 'form-signin md-3'} do %>
   <input type="hidden" name="recovery_id" value="<%= @password_recovery.recovery_id %>">
   <h2 class="form-signin-heading">Enter your new password</h2>
   <div class="row">

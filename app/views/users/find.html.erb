@@ -16,6 +16,10 @@
         <%= f.label :email_cont %>
         <%= f.text_field :email_cont %>
       </div>
+      <div class="form-group">
+        <%= f.label :status_equals%>
+        <%= f.select :status_eq, User.statuses, :include_blank => true %>
+      </div>
       <%= f.submit %>
     <% end %>
   </div>

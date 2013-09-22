@@ -1,9 +1,41 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Role: <%= @role.title %></h3>
+  </div>
+  <div class="panel-body">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @role.title %>
-</p>
 
-<%= link_to 'Edit', edit_role_path(@role) %> |
+    <%= form_tag add_user_role_path(@role), :method => :post do %>
+      <strong>Add User:</strong>
+      <%= select_tag :user_id, options_for_select(users_left_to_add), :include_blank => true %>
+      <%= submit_tag 'Add User' %>
+    <% end %>
+
+
+
+    <table class="table table-bordered table-condensed table-hover">
+      <thead>
+        <th></th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>E-mail</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% @role.users.each do |user| %>
+          <tr>
+            <td><%= link_to 'Show', user_path(user) %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+            <td><%= link_to 'Remove User', remove_user_role_path(@role, :user_id => user.id), :method => :delete, :confirm => "Remove user?" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
 <%= link_to 'Back', roles_path %>
