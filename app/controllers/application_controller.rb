@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   protected
   def authorize
     unless @current_user = User.active.find_by_id(session[:user_id])
-      redirect_to login_url, :notice => "Please log in"
+      redirect_to login_url(:url => Rack::Utils.escape(request.original_url)), :notice => "Please log in"
     end
   end
 
