@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130921233244) do
+ActiveRecord::Schema.define(version: 20130922173810) do
+
+  create_table "companies", force: true do |t|
+    t.string   "name"
+    t.string   "website"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jobs", force: true do |t|
+    t.string   "title"
+    t.integer  "person_id"
+    t.integer  "company_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "work_phone"
+    t.string   "work_email"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "password_changes", force: true do |t|
     t.integer  "user_id"
@@ -22,6 +43,14 @@ ActiveRecord::Schema.define(version: 20130921233244) do
   create_table "password_recoveries", force: true do |t|
     t.integer  "user_id"
     t.string   "recovery_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "people", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"

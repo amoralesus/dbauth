@@ -1,5 +1,11 @@
 Dbauth::Application.routes.draw do
 
+  resources :jobs
+
+  resources :people
+
+  resources :companies
+
   resources :roles do
     member do
       post 'add_user'
