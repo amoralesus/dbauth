@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PasswordChangeTest < ActiveSupport::TestCase
   setup do
-    user = User.new(:password => 'testingsomething', :username => 'onetwofive', :email => 'onetowfive@dot.com')
+    user = User.new(:password => 'testingsomething', :username => 'onetwofive', :email => 'onetowfive@dot.com', :password_confirmation => 'testingsomething' )
     user.save!
     @user = User.authenticate('onetwofive', 'testingsomething')
     raise "could not get back user" unless @user.id == user.id
@@ -11,7 +11,7 @@ class PasswordChangeTest < ActiveSupport::TestCase
   test "A new password change should require the current password" do
     password_change = @user.password_changes.new(:current_password => nil, :new_password => '1234566', :new_password_confirmation => '1234566')
     password_change.save
-    assert_equal(["Current password Can not be blank"], password_change.errors.full_messages)
+    assert_equal(["Current password can not be blank", "Current password is not correct"], password_change.errors.full_messages)
   end
 
   test "A new password change should require same new_password and new_password_confirmation" do
