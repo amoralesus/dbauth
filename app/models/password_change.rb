@@ -12,7 +12,9 @@ class PasswordChange < ActiveRecord::Base
   attr_accessor :new_password_confirmation
 
   def enforce_current_password
-    self.errors.add(:current_password, 'Can not be blank') if current_password.blank?
+    self.errors.add(:current_password, 'can not be blank') if current_password.blank?
+    auth_user = User.authenticate(user.username, current_password.to_s)
+    self.errors.add(:current_password, 'is not correct') if auth_user.nil? or auth_user.id != user.id
   end
   
   def change_user_password
