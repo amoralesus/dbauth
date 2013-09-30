@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 set :application, "dbauth"
 set :repository,  "git@github.com:amoralesus/dbauth.git"
 set :deploy_to, "/u/apps/dbauth"
