@@ -28,8 +28,15 @@ module Dbauth
       :user_name            => ENV['smtp_user'],
       :password             => ENV['smtp_password'],
       :authentication       => 'plain',
-      :enable_starttls_auto => true  }
-      
+      :enable_starttls_auto => true  
+    }
 
+
+    config.middleware.use ExceptionNotification::Rack,
+      :email => {
+      :email_prefix => "[dbauth] ",
+      :sender_address => %{"notifier" <smtpsender@moralitos.com>},
+      :exception_recipients => %w{alberto@moralitos.com}
+    }
   end
 end

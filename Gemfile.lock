@@ -59,6 +59,9 @@ GEM
     debugger-ruby_core_source (1.2.3)
     declarative_authorization (0.5.7)
     erubis (2.7.0)
+    exception_notification (4.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
     execjs (2.0.2)
     highline (1.6.19)
     hike (1.2.3)
@@ -156,6 +159,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   debugger
   declarative_authorization
+  exception_notification
   jbuilder (~> 1.2)
   jquery-rails
   mysql2
