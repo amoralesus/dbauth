@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Person</h3>
+  </div>
+  <div class="panel-body">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @person.first_name %>
-</p>
+    <p>
+      <strong>First name:</strong>
+      <%= @person.first_name %>
+    </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @person.last_name %>
-</p>
+    <p>
+      <strong>Last name:</strong>
+      <%= @person.last_name %>
+    </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @person.status %>
-</p>
+    <p>
+      <strong>Status:</strong>
+      <%= @person.status %>
+    </p>
+  </div>
 
+</div>
 <%= link_to 'Edit', edit_person_path(@person) %> |
 <%= link_to 'Back', people_path %>

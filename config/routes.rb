@@ -2,7 +2,11 @@ Dbauth::Application.routes.draw do
 
   resources :jobs
 
-  resources :people
+  resources :people do
+    collection do
+      get 'find'
+    end
+  end
 
   resources :companies
 

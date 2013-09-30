@@ -11,17 +11,23 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Entering User</h3>
+  </div>
+  <div class="panel-body">
+
+  <div class="form-group">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.select :status, Person.statuses, :include_blank => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

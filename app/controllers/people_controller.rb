@@ -4,7 +4,12 @@ class PeopleController < ApplicationController
   # GET /people
   # GET /people.json
   def index
-    @people = Person.all
+    @q = Person.search(params[:q])
+    @people = @q.result(distinct: true).paginate(:page => params[:page])
+  end
+
+  def find
+    @q = Person.search(params[:q])
   end
 
   # GET /people/1
